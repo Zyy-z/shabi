@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.accp.domain.Chezi;
 import com.accp.service.service;
 
+/**
+ * 
+ * 1111111111111111111111
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("/chezi")
 public class dwcontroller {
