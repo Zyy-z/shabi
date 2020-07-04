@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="ctx">
+		<table>
+			<tr>
+				<td>厂商</td>
+				<td v-for="item in chezi">{{item.changshang}}</td>
+			</tr>
+			<tr>
+				<td>车身结构</td>
+				<td v-for="item in chezi">{{item.csjiegou}}</td>
+			</tr>
+			<tr>
+				<td>长宽高</td>
+				<td v-for="item in chezi">{{item.ckg}}</td>
+			</tr>
+			<tr>
+				<td>发动机</td>
+				<td v-for="item in chezi">{{item.fadongji}}</td>
+			</tr>
+			<tr>
+				<td>变速箱</td>
+				<td v-for="item in chezi">{{item.biansuxiang}}</td>
+			</tr>
+			<tr>
+				<td>最高车速</td>
+				<td v-for="item in chezi">{{item.kmh}}</td>
+			</tr>
+			<tr>
+				<td>百公里加速</td>
+				<td v-for="item in chezi">{{item.jstime}}</td>
+			</tr>
+			<tr>
+				<td>官方油耗</td>
+				<td v-for="item in chezi">{{item.gfyh}}</td>
+			</tr>
+			<tr>
+				<td>保险期限</td>
+				<td v-for="item in chezi">{{item.baoxiu}}</td>
+			</tr>
+			<tr>
+				<td>动力类型</td>
+				<td v-for="item in chezi">{{item.dongli}}</td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript" th:src="@{/js/jquery-1.12.4.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/vue.js}"></script>
+	<script type="text/javascript">
+		el:"#ctx",
+		data(){
+			return {
+				chezi:{}
+			}
+		},
+		methods:{
+			var that=this;
+			$.ajax({
+				url:"[[@{/chushihua}]]",
+				success:function(result){
+					that.chezi=result;
+				}
+			});
+		},
+		created(){
+			this.chushihua();
+		}
+	</script>
+</body>
+</html>

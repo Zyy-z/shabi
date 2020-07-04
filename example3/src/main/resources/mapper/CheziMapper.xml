@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.CheziMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Chezi" >
+    <result column="changshang" property="changshang" jdbcType="VARCHAR" />
+    <result column="csjiegou" property="csjiegou" jdbcType="VARCHAR" />
+    <result column="ckg" property="ckg" jdbcType="VARCHAR" />
+    <result column="fadongji" property="fadongji" jdbcType="VARCHAR" />
+    <result column="biansuxiang" property="biansuxiang" jdbcType="VARCHAR" />
+    <result column="kmh" property="kmh" jdbcType="INTEGER" />
+    <result column="jstime" property="jstime" jdbcType="DOUBLE" />
+    <result column="gfyh" property="gfyh" jdbcType="VARCHAR" />
+    <result column="baoxiu" property="baoxiu" jdbcType="VARCHAR" />
+    <result column="dongli" property="dongli" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    changshang, csjiegou, ckg, fadongji, biansuxiang, kmh, jstime, gfyh, baoxiu, dongli
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CheziExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from chezi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CheziExample" >
+    delete from chezi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Chezi" >
+    insert into chezi (changshang, csjiegou, ckg, 
+      fadongji, biansuxiang, kmh, 
+      jstime, gfyh, baoxiu, 
+      dongli)
+    values (#{changshang,jdbcType=VARCHAR}, #{csjiegou,jdbcType=VARCHAR}, #{ckg,jdbcType=VARCHAR}, 
+      #{fadongji,jdbcType=VARCHAR}, #{biansuxiang,jdbcType=VARCHAR}, #{kmh,jdbcType=INTEGER}, 
+      #{jstime,jdbcType=DOUBLE}, #{gfyh,jdbcType=VARCHAR}, #{baoxiu,jdbcType=VARCHAR}, 
+      #{dongli,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Chezi" >
+    insert into chezi
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="changshang != null" >
+        changshang,
+      </if>
+      <if test="csjiegou != null" >
+        csjiegou,
+      </if>
+      <if test="ckg != null" >
+        ckg,
+      </if>
+      <if test="fadongji != null" >
+        fadongji,
+      </if>
+      <if test="biansuxiang != null" >
+        biansuxiang,
+      </if>
+      <if test="kmh != null" >
+        kmh,
+      </if>
+      <if test="jstime != null" >
+        jstime,
+      </if>
+      <if test="gfyh != null" >
+        gfyh,
+      </if>
+      <if test="baoxiu != null" >
+        baoxiu,
+      </if>
+      <if test="dongli != null" >
+        dongli,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="changshang != null" >
+        #{changshang,jdbcType=VARCHAR},
+      </if>
+      <if test="csjiegou != null" >
+        #{csjiegou,jdbcType=VARCHAR},
+      </if>
+      <if test="ckg != null" >
+        #{ckg,jdbcType=VARCHAR},
+      </if>
+      <if test="fadongji != null" >
+        #{fadongji,jdbcType=VARCHAR},
+      </if>
+      <if test="biansuxiang != null" >
+        #{biansuxiang,jdbcType=VARCHAR},
+      </if>
+      <if test="kmh != null" >
+        #{kmh,jdbcType=INTEGER},
+      </if>
+      <if test="jstime != null" >
+        #{jstime,jdbcType=DOUBLE},
+      </if>
+      <if test="gfyh != null" >
+        #{gfyh,jdbcType=VARCHAR},
+      </if>
+      <if test="baoxiu != null" >
+        #{baoxiu,jdbcType=VARCHAR},
+      </if>
+      <if test="dongli != null" >
+        #{dongli,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CheziExample" resultType="java.lang.Integer" >
+    select count(*) from chezi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update chezi
+    <set >
+      <if test="record.changshang != null" >
+        changshang = #{record.changshang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.csjiegou != null" >
+        csjiegou = #{record.csjiegou,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ckg != null" >
+        ckg = #{record.ckg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fadongji != null" >
+        fadongji = #{record.fadongji,jdbcType=VARCHAR},
+      </if>
+      <if test="record.biansuxiang != null" >
+        biansuxiang = #{record.biansuxiang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kmh != null" >
+        kmh = #{record.kmh,jdbcType=INTEGER},
+      </if>
+      <if test="record.jstime != null" >
+        jstime = #{record.jstime,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gfyh != null" >
+        gfyh = #{record.gfyh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.baoxiu != null" >
+        baoxiu = #{record.baoxiu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dongli != null" >
+        dongli = #{record.dongli,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update chezi
+    set changshang = #{record.changshang,jdbcType=VARCHAR},
+      csjiegou = #{record.csjiegou,jdbcType=VARCHAR},
+      ckg = #{record.ckg,jdbcType=VARCHAR},
+      fadongji = #{record.fadongji,jdbcType=VARCHAR},
+      biansuxiang = #{record.biansuxiang,jdbcType=VARCHAR},
+      kmh = #{record.kmh,jdbcType=INTEGER},
+      jstime = #{record.jstime,jdbcType=DOUBLE},
+      gfyh = #{record.gfyh,jdbcType=VARCHAR},
+      baoxiu = #{record.baoxiu,jdbcType=VARCHAR},
+      dongli = #{record.dongli,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
